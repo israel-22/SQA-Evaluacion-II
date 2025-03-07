@@ -1,0 +1,14 @@
+﻿@model YuGiOhCards.Models.YuGiOhCard
+
+<h2>@Model.Name</h2>
+
+<div>
+    @foreach (var image in Model.CardImages)
+    {
+        <img src="@image.ImageUrl" alt="@Model.Name" class="img-thumbnail">
+    }
+</div>
+
+<p>Precio en CardMarket: $@Model.CardPrices[0].CardMarketPrice</p>
+
+<a href="@Url.Action("Index", "YuGiOh")" class="btn btn-secondary">Volver</a>
