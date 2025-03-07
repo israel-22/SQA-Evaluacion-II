@@ -1,22 +1,22 @@
 using YuGiOhCards.Services;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Registrar el servicio HttpClient para el servicio IYuGiOhService
+builder.Services.AddHttpClient<IYuGiOhService, YuGiOhService>();
+
+// Agregar los servicios para el controlador y vistas
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configuración del pipeline de la solicitud HTTP
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    // El valor predeterminado de HSTS es 30 días. Podrías cambiarlo para escenarios de producción, consulta https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
-builder.Services.AddHttpClient<IYuGiOhService, YuGiOhService>();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -25,6 +25,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Definir la ruta predeterminada para los controladores
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

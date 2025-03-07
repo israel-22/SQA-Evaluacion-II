@@ -1,13 +1,9 @@
-﻿
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using YuGiOhCards.Models;
+﻿using YuGiOhCards.Models;
 
 namespace YuGiOhCards.Services
 {
     public interface IYuGiOhService
     {
-        Task<List<YuGiOhCard>> GetCards();
-        Task<YuGiOhCard> GetCardById(int id);
+        Task<List<YuGiOhCard>> GetCardsAsync(); // Aquí defines los métodos que necesitas, como obtener cartas.
     }
 }

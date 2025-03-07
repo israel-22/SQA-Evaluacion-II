@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("YuGiOhCards")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5214a7cc88ada1050c5ee95bb7c5fb095d183cd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad7b6ebacf7d012f7bc11c880998d20c7d778273")]
 [assembly: System.Reflection.AssemblyProductAttribute("YuGiOhCards")]
 [assembly: System.Reflection.AssemblyTitleAttribute("YuGiOhCards")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

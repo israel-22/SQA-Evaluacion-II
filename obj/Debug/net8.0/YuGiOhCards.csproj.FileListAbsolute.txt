@@ -33,3 +33,4 @@ C:\Users\ItsqmetEstudiantes.DESKTOP-G04UT9C\Documents\SQA\Evaluacion-2\YuGiOhCar
 C:\Users\ItsqmetEstudiantes.DESKTOP-G04UT9C\Documents\SQA\Evaluacion-2\YuGiOhCards\YuGiOhCards\obj\Debug\net8.0\YuGiOhCards.genruntimeconfig.cache
 C:\Users\ItsqmetEstudiantes.DESKTOP-G04UT9C\Documents\SQA\Evaluacion-2\YuGiOhCards\YuGiOhCards\obj\Debug\net8.0\ref\YuGiOhCards.dll
 C:\Users\ItsqmetEstudiantes.DESKTOP-G04UT9C\Documents\SQA\Evaluacion-2\YuGiOhCards\YuGiOhCards\obj\Debug\net8.0\YuGiOhCards.csproj.AssemblyReference.cache
+C:\Users\ItsqmetEstudiantes.DESKTOP-G04UT9C\Documents\SQA\Evaluacion-2\YuGiOhCards\YuGiOhCards\obj\Debug\net8.0\YuGiOhCards.sourcelink.json

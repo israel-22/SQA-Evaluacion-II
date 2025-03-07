@@ -1,19 +1,19 @@
-﻿@model List<YuGiOhCards.Models.YuGiOhCard>
+﻿@model List<YuGiOhCards.Services.Card>
 
-<h2>Cartas de Blue-Eyes</h2>
+@{
+    ViewData["Title"] = "Index";
+}
 
-<div class="row">
+<h1>Cartas de Yu-Gi-Oh! - Blue-Eyes</h1>
+
+<div>
     @foreach (var card in Model)
     {
-        <div class="col-md-4">
-            <div class="card">
-                <img src="@card.CardImages[0].ImageUrl" class="card-img-top" alt="@card.Name">
-                <div class="card-body">
-                    <h5 class="card-title">@card.Name</h5>
-                    <p>Precio: $@card.CardPrices[0].CardMarketPrice</p>
-                    <a href="@Url.Action("Details", "YuGiOh", new { id = card.Id })" class="btn btn-primary">Ver detalles</a>
-                </div>
-            </div>
+        <div>
+            <img src="@card.ImageUrl" alt="@card.Name" />
+            <h3>@card.Name</h3>
+            <p>Precio: @card.Price</p>
+            <a href="@Url.Action("Details", "Home", new { cardId = card.Id })">Ver detalles</a>
         </div>
     }
 </div>
