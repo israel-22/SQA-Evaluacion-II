@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using YuGiOhCards.Services;  // Asegúrate de que el espacio de nombres del servicio sea correcto
-using YuGiOhCards.Models;    // Si es necesario para las clases de modelo
+using YuGiOhCards.Models;  // Asegúrate de que el espacio de nombres del modelo es correcto
+using YuGiOhCards.Services;
 
 namespace YuGiOhCards.Controllers
 {
@@ -9,87 +10,29 @@ namespace YuGiOhCards.Controllers
     {
         private readonly IYuGiOhService _yuGiOhService;
 
-        // Constructor con inyección de dependencias
         public HomeController(IYuGiOhService yuGiOhService)
         {
             _yuGiOhService = yuGiOhService;
         }
 
-        // Acción para la vista principal (Index)
-        public async Task<IActionResult> Index()
+        // Acción Index para mostrar las cartas
+        public async Task<IActionResult> Index(string archetype = "Blue-Eyes")
         {
-            var cards = await _yuGiOhService.GetCardsAsync("Blue-Eyes");
-            return View(cards);  // Pasa la lista de cartas a la vista
+            // Llamada al servicio para obtener las cartas según el archetype
+            var cards = await _yuGiOhService.GetCardsAsync(archetype);
+            return View(cards);  // Pasa las cartas a la vista Index
         }
 
-        // Acción para la vista de detalles de la carta
-        public async Task<IActionResult> Details(string cardId)
+        // Acción Details para mostrar los detalles de una carta
+        public async Task<IActionResult> Details(int id)
         {
-            var cardDetails = await _yuGiOhService.GetCardDetailsAsync(cardId);
-            return View(cardDetails);  // Pasa los detalles de la carta a la vista
-        }
-
-        // Acción para la vista de crear carta (opcional)
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // Acción POST para crear carta (opcional)
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(IFormCollection collection)
-        {
-            try
+            // Llamada al servicio para obtener la carta por ID (mejor que obtener todas las cartas)
+            var card = await _yuGiOhService.GetCardByIdAsync(id);  // Asumiendo que tienes esta función en el servicio
+            if (card == null)
             {
-                return RedirectToAction(nameof(Index));
+                return NotFound();  // Si no se encuentra la carta, devuelve NotFound
             }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // Acción para la vista de editar carta (opcional)
-        public IActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // Acción POST para editar carta (opcional)
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // Acción para eliminar carta (opcional)
-        public IActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // Acción POST para eliminar carta (opcional)
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return View(card);  // Pasa los detalles de la carta a la vista Details
         }
     }
 }

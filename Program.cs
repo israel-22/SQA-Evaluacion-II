@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Registrar el servicio HttpClient para el servicio IYuGiOhService
 builder.Services.AddHttpClient<IYuGiOhService, YuGiOhService>();
 
-// Agregar los servicios para el controlador y vistas
+// Agregar los servicios para los controladores y vistas
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

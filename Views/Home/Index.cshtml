@@ -1,19 +1,19 @@
-﻿@model List<YuGiOhCards.Services.Card>
+﻿@model List<YuGiOhCards.Models.YuGiOhCard>  <!-- Cambié el tipo de modelo aquí para que sea una lista de cartas -->
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Cartas de Yu-Gi-Oh!";
 }
 
-<h1>Cartas de Yu-Gi-Oh! - Blue-Eyes</h1>
+<h1>Cartas de Yu-Gi-Oh! - @ViewData["Archetype"]</h1>  <!-- Puedes usar ViewData para pasar el archetype también -->
 
 <div>
     @foreach (var card in Model)
     {
         <div>
-            <img src="@card.ImageUrl" alt="@card.Name" />
+            <img src="@card.CardImages.FirstOrDefault()?.ImageUrl" alt="@card.Name" />
             <h3>@card.Name</h3>
-            <p>Precio: @card.Price</p>
-            <a href="@Url.Action("Details", "Home", new { cardId = card.Id })">Ver detalles</a>
+            <p>Precio: @card.CardPrices.FirstOrDefault()?.CardMarketPrice</p>
+            <a href="@Url.Action("Details", "Home", new { id = card.Id })">Ver detalles</a>
         </div>
     }
 </div>

@@ -1,15 +1,13 @@
-﻿@model YuGiOhCards.Services.CardDetails
+﻿@model YuGiOhCards.Models.YuGiOhCard  <!-- El modelo es una sola carta -->
 
 @{
     ViewData["Title"] = "Detalles de la carta";
 }
 
 <h1>@Model.Name</h1>
-<img src="@Model.ImageUrl" alt="@Model.Name" />
-<p>@Model.Description</p>
+<img src="@Model.CardImages.FirstOrDefault()?.ImageUrl" alt="@Model.Name" />
+<p>@Model.Name</p>
+<p>Precio: @Model.CardPrices.FirstOrDefault()?.CardMarketPrice</p>
 
-<h2>Imágenes adicionales:</h2>
-@foreach (var image in Model.Images)
-{
-    <img src="@image" alt="Imagen adicional" />
-}
+<h2>Descripción:</h2>
+<p>@Model.Description</p> <!-- Asegúrate de que 'Description' exista en tu modelo si es necesario -->

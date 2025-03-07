@@ -1,9 +1,7 @@
 ﻿using YuGiOhCards.Models;
 
-namespace YuGiOhCards.Services
+public interface IYuGiOhService
 {
-    public interface IYuGiOhService
-    {
-        Task<List<YuGiOhCard>> GetCardsAsync(); // Aquí defines los métodos que necesitas, como obtener cartas.
-    }
+    Task<List<YuGiOhCard>> GetCardsAsync(string archetype);
+    Task<YuGiOhCard> GetCardByIdAsync(int id);  // Nueva función
 }
